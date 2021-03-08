@@ -47,7 +47,8 @@
             "editor": "textfield",
             "default": "",
             "example": "https://your-site.com/api/something",
-            "pattern": "https?:\/\/.*"
+            "pattern": "https?:\/\/.*",
+            "nullable": true
         },
         "proxy": {
             "title": "Proxy configuration",
