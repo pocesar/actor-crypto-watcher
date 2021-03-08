@@ -8,7 +8,7 @@
             "title": "Addresses",
             "description": "Accepts Bitcoin and Ethereum addresses",
             "type": "array",
-            "pattern": "^([13]|bc1|0x)",
+            "patternValue": "^([13]|bc1|0x)",
             "uniqueItems": true,
             "example": [
                 "1CounterpartyXXXXXXXXXXXXXXXUWLpVr",
