@@ -1,6 +1,6 @@
 {
-    "title": "facebook-page-crawler",
-    "description": "Extract public profile information from Facebook pages and service listings. The actor scrapes data from Facebook posts, comments, reviews, and more.",
+    "title": "actor-crypto-watcher",
+    "description": "Watch for balance and transactions for Bitcoin and Ethereum addresses",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
@@ -8,6 +8,7 @@
             "title": "Addresses",
             "description": "Accepts Bitcoin and Ethereum addresses",
             "type": "array",
+            "pattern": "^([13]|bc1|0x)",
             "uniqueItems": true,
             "example": [
                 "1CounterpartyXXXXXXXXXXXXXXXUWLpVr",
@@ -25,16 +26,16 @@
             "editor": "number"
         },
         "maxDate": {
-            "title": "Max transaction date",
-            "description": "",
+            "title": "Maximum transaction date",
+            "description": "Provide a maximum date to filter transactions. Accepts static dates, like YYYY-MM-DD or relative dates, like 'today', 'yesterday' or '2 days'",
             "example": "3 days",
             "default": "",
             "type": "string",
             "editor": "textfield"
         },
         "minDate": {
-            "title": "Min post date",
-            "description": "Set the minimum post date, remembering that posts start from newest to oldest, it will skip the newest posts up to the specified date",
+            "title": "Minimum transaction date",
+            "description": "Provide a minimum date to filter transactions. Accepts static dates, like YYYY-MM-DD or relative dates, like 'today', 'yesterday' or '2 days'",
             "example": "2020-01-01",
             "default": "",
             "type": "string",
