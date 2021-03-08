@@ -1,0 +1,9 @@
+{
+	"name": "actor-crypto-watcher",
+	"version": "0.0",
+	"buildTag": "latest",
+	"env": {
+        "APIFY_LOG_LEVEL": "DEBUG"
+    },
+	"template": "project_empty"
+}

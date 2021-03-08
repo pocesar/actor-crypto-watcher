@@ -1,0 +1,97 @@
+{
+    "title": "facebook-page-crawler",
+    "description": "Extract public profile information from Facebook pages and service listings. The actor scrapes data from Facebook posts, comments, reviews, and more.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "addresses": {
+            "title": "Addresses",
+            "description": "Accepts Bitcoin and Ethereum addresses",
+            "type": "array",
+            "uniqueItems": true,
+            "example": [
+                "1CounterpartyXXXXXXXXXXXXXXXUWLpVr",
+                "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo",
+                "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe"
+            ],
+            "editor": "stringList"
+        },
+        "maxTransactions": {
+            "title": "Max transactions",
+            "description": "Limit the max number of transactions",
+            "type": "integer",
+            "default": 10,
+            "prefill": 10,
+            "editor": "number"
+        },
+        "maxDate": {
+            "title": "Max transaction date",
+            "description": "",
+            "example": "3 days",
+            "default": "",
+            "type": "string",
+            "editor": "textfield"
+        },
+        "minDate": {
+            "title": "Min post date",
+            "description": "Set the minimum post date, remembering that posts start from newest to oldest, it will skip the newest posts up to the specified date",
+            "example": "2020-01-01",
+            "default": "",
+            "type": "string",
+            "editor": "textfield"
+        },
+        "webhook": {
+            "title": "Webhook",
+            "description": "Calls this endpoint URL when it's finished, as a POST",
+            "type": "string",
+            "editor": "textfield",
+            "default": "",
+            "example": "https://your-site.com/api/something",
+            "pattern": "https?:\/\/.*"
+        },
+        "proxy": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Select proxies to be used by your actor.",
+            "example": {
+                "useApifyProxy": true
+            },
+            "prefill": {
+                "useApifyProxy": true
+            },
+            "editor": "proxy"
+        },
+        "extendOutputFunction": {
+            "title": "Extend Output Function",
+            "description": "Add or remove properties on the output object or omit the output returning null",
+            "type": "string",
+            "default": "",
+            "prefill": "async ({ data, item, page, request, _, customData }) => {\n  return item;\n}",
+            "editor": "javascript",
+            "sectionCaption": "Extend scraper functionality",
+            "sectionDescription": "You can change the output of the items for your dataset here, or add additional behavior for"
+        },
+        "extendScraperFunction": {
+            "title": "Extend Scraper Function",
+            "description": "Advanced function that allows you to extend the default scraper functionality, allowing you to manually perform actions on the page",
+            "type": "string",
+            "default": "",
+            "prefill": "async ({ page, request, customData, Apify }) => {\n \n}",
+            "editor": "javascript"
+        },
+        "customData": {
+            "title": "Custom data",
+            "description": "Any data that you want to have available inside the Extend Output/Scraper Function",
+            "default": {},
+            "prefill": {},
+            "type": "object",
+            "editor": "json"
+        },
+        "debugLog": {
+            "title": "Debug Log",
+            "description": "Enable a more verbose logging to be able to understand what's happening during the scraping",
+            "type": "boolean"
+        }
+    },
+    "required": ["addresses", "proxy"]
+}
