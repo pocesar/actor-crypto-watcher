@@ -10,6 +10,7 @@
             "type": "array",
             "patternValue": "^([13]|bc1|0x)",
             "uniqueItems": true,
+            "default": ["1CounterpartyXXXXXXXXXXXXXXXUWLpVr"],
             "example": [
                 "1CounterpartyXXXXXXXXXXXXXXXUWLpVr",
                 "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo",
@@ -54,6 +55,9 @@
             "type": "object",
             "description": "Select proxies to be used by your actor.",
             "example": {
+                "useApifyProxy": true
+            },
+            "default": {
                 "useApifyProxy": true
             },
             "prefill": {
