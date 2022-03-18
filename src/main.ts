@@ -222,11 +222,12 @@ Apify.main(async () => {
                         const parseTo = parseTag('span > span');
 
                         return trs.map((tr) => {
-                            const tds = text(tr.querySelectorAll('td'));
+                            const tds = text(tr.querySelectorAll('td').filter((el) => (el?.style.display !== 'none')));
 
                             return {
                                 tx: tds(1),
-                                block: tds(2),
+                                method: tds(2, (td) => td.querySelector('span')?.dataset?.originalTitle ?? null),
+                                block: tds(3),
                                 date: tds(4, (td) => td.querySelector('span')?.dataset?.originalTitle ?? null),
                                 from: [tds(5, parseFrom)],
                                 to: [tds(7, parseTo)],
@@ -279,6 +280,7 @@ Apify.main(async () => {
                             transaction: {
                                 date: `${tx.time}`,
                                 fee: tx.fee,
+                                method: 'Transfer',
                                 block: tx.block.height,
                                 amount: tx.inputs.reduce((out: number, { value }: any) => {
                                     return out + value;
