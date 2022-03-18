@@ -215,10 +215,18 @@ export const proxyConfiguration = async ({
 };
 
 export const fixDate = (date: string | number) => {
+    if (!date) {
+        return null;
+    }
+    
     const matches = `${date}`.match(/(\d{1,2}):(\d{1,2}):(\d{1,2})/);
 
     if (!matches) {
-        return new Date(+date * 1000).toISOString();
+        if (+date) {
+            return new Date(+date * 1000).toISOString();
+        }
+        
+        return null;
     }
 
     const [matched, hour, minute, second] = matches;
