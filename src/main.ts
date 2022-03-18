@@ -222,7 +222,7 @@ Apify.main(async () => {
                         const parseTo = parseTag('span > span');
 
                         return trs.map((tr) => {
-                            const tds = text(tr.querySelectorAll('td').filter((el) => (el?.style.display !== 'none')));
+                            const tds = text([...tr.querySelectorAll('td')].filter((el) => (el?.style.display !== 'none')));
 
                             return {
                                 tx: tds(1),
