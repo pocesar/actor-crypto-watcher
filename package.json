@@ -3,9 +3,9 @@
     "version": "0.0.1",
     "description": "Watch Bitcoin and Ethereum wallets addresses and get notified when it changes",
     "dependencies": {
-        "apify": "^1.0.2",
+        "apify": "^2.2.2",
         "lodash": "^4.17.21",
-        "puppeteer": "^5.5.0",
+        "puppeteer": "*",
         "moment": "^2.29.1",
         "ts-node": "^9.1.1",
         "typescript": "^4.2.3"
